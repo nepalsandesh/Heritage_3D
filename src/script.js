@@ -1,10 +1,229 @@
+// import './style.css'
+// import * as THREE from 'three'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+// import * as dat from 'dat.gui'
+// import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+// // import typefaceFont from 'three/examples/fonts/helvetiker_regular.typeface.json'
+// import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
+
+
+
+
+// /**
+//  * Base
+//  */
+// // Debug
+// // const gui = new dat.GUI()
+
+// // Canvas
+// const canvas = document.querySelector('canvas.webgl')
+
+// // Scene
+// const scene = new THREE.Scene()
+
+// // // Axes helper
+// // const axesHelper = new THREE.AxesHelper()
+// // scene.add(axesHelper)
+
+// /**
+//  * Textures
+//  */
+// const textureLoader = new THREE.TextureLoader()
+// const matcapTexture = textureLoader.load('/textures/matcaps/8.png')
+
+// /**
+//  * Fonts
+//  */
+// const fontLoader = new  FontLoader()
+
+// fontLoader.load(
+//     '/fonts/helvetiker_regular.typeface.json',
+//     (font) => {
+//         const textGeometry = new TextGeometry(
+//             'Hello World,',
+//             {
+//                 font: font,
+//                 size: 0.5,
+//                 height:0.2,
+//                 curveSegments: 6,
+//                 bevelEnabled: true,
+//                 bevelThickness: 0.03,
+//                 bevelSize: 0.02,
+//                 bevelOffset: 0,
+//                 bevelSegments: 4
+//             }
+//         )
+//         // // To center the geometry
+//         // // textGeometry.computeBoundingBox()
+//         // // console.log(textGeometry.boundingBox)
+//         // textGeometry.translate(
+//         //     - (textGeometry.boundingBox.max.x - 0.02) * 0.5,
+//         //     - (textGeometry.boundingBox.max.y - 0.02) * 0.5,
+//         //     - (textGeometry.boundingBox.max.z - 0.03) * 0.5,
+//         // )
+//         // // textGeometry.computeBoundingBox()
+//         // // console.log(textGeometry.boundingBox)
+
+//         // or,
+//         textGeometry.center()
+
+//         const textGeometry2 = new TextGeometry(
+//             'Happy Computing !',
+//             {
+//                 font: font,
+//                 size: 0.5,
+//                 height:0.2,
+//                 curveSegments: 6,
+//                 bevelEnabled: true,
+//                 bevelThickness: 0.03,
+//                 bevelSize: 0.02,
+//                 bevelOffset: 0,
+//                 bevelSegments: 4
+//             }
+//         )
+//         // // To center the geometry
+//         // // textGeometry.computeBoundingBox()
+//         // // console.log(textGeometry.boundingBox)
+
+//         // // textGeometry.computeBoundingBox()
+//         // // console.log(textGeometry.boundingBox)
+
+//         // or,
+//         textGeometry2.center()
+//         textGeometry2.translate(
+//             (textGeometry.boundingBox.max.x - 1.7),
+//             - (textGeometry.boundingBox.max.y) * 3,
+//             (textGeometry.boundingBox.max.z),
+//         )
+
+//         const textMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture })
+//         const text1 = new THREE.Mesh(textGeometry, textMaterial)
+//         const text2 = new THREE.Mesh(textGeometry2, textMaterial)
+//         scene.add(text1, text2)
+        
+//         console.time('donuts')
+
+//         const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45)
+//         const donutMaterial = new THREE.MeshMatcapMaterial({ matcap:matcapTexture })
+
+//         for(let i = 0; i < 100; i++)
+//         {
+//             const donut = new THREE.Mesh(donutGeometry, donutMaterial)
+            
+//             donut.position.x = (Math.random() - 0.5) * 10
+//             donut.position.y = (Math.random() - 0.5) * 10
+//             donut.position.z = (Math.random() - 0.5) * 10
+
+//             donut.rotation.x = Math.random() * Math.PI
+//             donut.rotation.y = Math.random() * Math.PI
+
+//             // // scaling donuts
+//             const scale = Math.random()
+//             // donut.scale.x = scale
+//             // donut.scale.y = scale
+//             // donut.scale.z = scale
+
+//             // // or,
+//             donut.scale.set(scale, scale, scale)
+
+//             scene.add(donut)
+//         }
+
+//         console.timeEnd('donuts')
+//     }
+// )
+
+
+// /**
+//  * Object
+//  */
+// // const cube = new THREE.Mesh(
+// //     new THREE.BoxGeometry(1, 1, 1),
+// //     new THREE.MeshBasicMaterial()
+// // )
+
+// // scene.add(cube)
+
+// /**
+//  * Sizes
+//  */
+// const sizes = {
+//     width: window.innerWidth,
+//     height: window.innerHeight
+// }
+
+// window.addEventListener('resize', () =>
+// {
+//     // Update sizes
+//     sizes.width = window.innerWidth
+//     sizes.height = window.innerHeight
+
+//     // Update camera
+//     camera.aspect = sizes.width / sizes.height
+//     camera.updateProjectionMatrix()
+
+//     // Update renderer
+//     renderer.setSize(sizes.width, sizes.height)
+//     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+// })
+
+// /**
+//  * Camera
+//  */
+// // Base camera
+// const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.01, 100)
+// camera.position.x = 1
+// camera.position.y = 1
+// camera.position.z = 2
+// scene.add(camera)
+
+// // Controls
+// const controls = new OrbitControls(camera, canvas)
+// controls.enableDamping = true
+
+// /**
+//  * Renderer
+//  */
+// const renderer = new THREE.WebGLRenderer({
+//     canvas: canvas
+// })
+// renderer.setSize(sizes.width, sizes.height)
+// renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+// /**
+//  * Animate
+//  */
+// const clock = new THREE.Clock()
+
+// const tick = () =>
+// {
+//     const elapsedTime = clock.getElapsedTime()
+
+//     // Update controls
+//     controls.update()
+
+//     // Render
+//     renderer.render(scene, camera)
+
+//     // Call tick again on the next frame
+//     window.requestAnimationFrame(tick)
+// }
+
+// tick()
+
+
+/**
+ * ------------------------------------------- Heritage 3D ----------------------------
+ */
+
+
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'
 import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js'
 import * as dat from 'lil-gui'
 
-// console.log(FirstPersonControls)
+// console.log(PointerLockControls)
 
 /**
  * Base
@@ -223,29 +442,48 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.001, 1000)
-camera.position.x = 40
-camera.position.y = 30
-camera.position.z = 40
+camera.position.x = 4
+camera.position.y = 4
+camera.position.z = 4
 scene.add(camera)
 
-// Controls
-const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
-controls.autoRotate = true
-// const controls = new PointerLockControls(camera, canvas)
-// scene.add(controls.getObject())
-// const controls = new FirstPersonControls(camera, canvas)
+// // Controls
+// const controls = new OrbitControls(camera, canvas)
+// controls.enableDamping = true
+// controls.autoRotate = true
 
+
+const pControls = new PointerLockControls(camera, canvas)
+const playButton = document.getElementById('menuPanel')
+playButton.onclick = () =>
+{
+    pControls.lock()
+    playButton.style.display = 'none'
+}
+
+pControls.addEventListener('unlock', () => {
+    playButton.style.display = 'block'
+})
+
+// Key down events
+const keyMap = {}
+const onDocumentKey = (e) => {
+    keyMap[e.code] = e.type === 'keydown'
+}
+document.addEventListener('keydown', onDocumentKey, false)
+document.addEventListener('keyup', onDocumentKey, false)
 
 /**
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
+    antialias: true
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setClearColor('#262837')
+document.body.appendChild(canvas)
 
 
 /**
@@ -276,7 +514,21 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update controls
-    controls.update()
+    // controls.update()    
+    if (keyMap['KeyW'] || keyMap['ArrowUp']) {
+        pControls.moveForward(0.25)
+    }
+    if (keyMap['KeyS'] || keyMap['ArrowDown']) {
+        pControls.moveForward(-0.25)
+    }
+    if (keyMap['KeyA'] || keyMap['ArrowLeft']) {
+        pControls.moveRight(-0.25)
+    }
+    if (keyMap['KeyD'] || keyMap['ArrowRight']) {
+        pControls.moveRight(0.25)
+    }
+
+
 
     // Render
     renderer.render(scene, camera)
@@ -284,5 +536,6 @@ const tick = () =>
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
+
 
 tick()
